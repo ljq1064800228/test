@@ -1,0 +1,76 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+     http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+     http://www.springframework.org/schema/tx
+     http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+     http://www.springframework.org/schema/context
+     http://www.springframework.org/schema/context/spring-context-3.1.xsd
+     http://www.springframework.org/schema/util
+     http://www.springframework.org/schema/util/spring-util.xsd
+     http://www.springframework.org/schema/aop
+     http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+     "
+	default-lazy-init="true">
+
+	<!-- 注解扫描 -->
+	<context:component-scan base-package="com.ak1ak1.*" />
+	
+    <!--开启申明试事物-->
+    <tx:annotation-driven transaction-manager="txManager" />
+
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+		<property name="url" value="${mysql_jdbc.url}" />
+		<property name="username" value="${mysql_jdbc.username}" />
+		<property name="password" value="${mysql_jdbc.password}" />
+	</bean>
+	<!-- mysql数据源配置 -->
+	<bean id="sqlSessionFactory_mysql" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:sqlMapConfig.xml"></property>
+		<property name="typeAliasesPackage" value="com.ak1ak1.entity" />
+		<!-- mapper和resultmap配置路径 -->
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:mapper/*.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	
+
+	<bean id="mapperScannerConfigurer2" class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.ak1ak1.repository.mapper" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory_mysql" />
+	</bean>
+
+	
+
+	<!-- ================================ 数据库事物部分 ========================================= -->
+	
+	<!-- 开启AOP注解扫描 -->
+    <aop:aspectj-autoproxy proxy-target-class="true" />
+    
+	<bean id="txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="save" propagation="REQUIRED" read-only="false" />
+			<tx:method name="delete" propagation="REQUIRED" read-only="false" />
+			<tx:method name="update" propagation="REQUIRED" read-only="false" />
+			<tx:method name="*" propagation="SUPPORTS" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+
+	<aop:config>
+		<aop:pointcut id="allServiceOperation"
+			expression="execution(* com.ak1ak1.service.*.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="allServiceOperation" />
+	</aop:config>
+</beans>

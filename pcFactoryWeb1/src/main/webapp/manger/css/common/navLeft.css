@@ -1,0 +1,120 @@
+/* .left_nav */
+.left_nav {	
+    width: 190px;
+    min-height: 100%;
+    background-color: #363737;
+    margin-right: -200px;
+    overflow: hidden;
+    display: block;
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    top: 0;
+}
+
+/* nav_wrap */
+.nav_wrap {
+	overflow: hidden;
+} 
+
+/* main_mune */
+.main_mune {
+	position:relative;
+}
+.nav_wrap .main_mune dt, .nav_wrap .main_mune dd {
+	height: 50px;
+	line-height: 50px;
+	padding-left:40px;
+	font-size: 14px;
+	color:#b3b3b3;
+}
+.nav_wrap .main_mune dt {
+	color:#747373;
+	font-size: 18px;
+}
+.nav_wrap .main_mune dd {
+	cursor:pointer;
+	border-left: 4px solid #363737;
+	transition:all 0.3s ease-out;
+	-webkit-transition:all 0.3s ease-out;
+	-moz-transition:all 0.3s ease-out;
+	-ms-transition:all 0.3s ease-out;
+	-o-transition:all 0.3s ease-out;
+}
+.nav_wrap .main_mune dd:hover {
+	color:#fff;
+	background-color: #0f904e;
+	border-left: 4px solid #f08200;
+}
+
+/* sub_mune_item */
+.sub_mune_item {
+	position:absolute;
+	left: 190px;
+	width: 100%;
+	height: 100%;
+	top:0;
+    background-color: #363737;
+    opacity: 0;
+    transition:all 0.3s ease-out;
+}
+.sub_mune_item.show {
+	left: 0px;
+	opacity: 1;
+}
+.nav_wrap .sub_mune_item dt, .nav_wrap .sub_mune_item dd {
+	height: 50px;
+	line-height: 50px;
+	padding-left:40px;
+	font-size: 14px;
+	color:#fefefe;
+}
+.nav_wrap .sub_mune_item dt {
+	color:#747373;
+	font-size: 18px;
+	position:relative;
+}
+.nav_wrap .sub_mune_item dt i {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height: 6px;
+	background-color: #0f904e;
+}
+.nav_wrap .sub_mune_item dd {
+	cursor:pointer;
+	transition:all 0.3s ease-out;
+	-webkit-transition:all 0.3s ease-out;
+	-moz-transition:all 0.3s ease-out;
+	-ms-transition:all 0.3s ease-out;
+	-o-transition:all 0.3s ease-out;
+}
+.nav_wrap .sub_mune_item dd:hover {
+	color:#f08200;
+	background-color: #30453b;
+}
+.nav_wrap .sub_mune_item dd.cur {
+	color:#f08200;
+	background-color: #30453b;
+}
+
+/* layui-btn */
+.sub_mune_item .layui-btn {
+	position:absolute;
+	bottom:60px;
+	left:30px;
+}
+.sub_mune_item .icons {
+	width: 17px;
+}
+
+/* covers */
+.left_nav .covers {
+	display: none;
+	position:absolute;
+	top:0;
+	left:0;
+	width: 100%;
+	height: 100%;
+}

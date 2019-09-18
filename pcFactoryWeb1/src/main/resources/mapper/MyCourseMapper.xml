@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ak1ak1.repository.mapper.MyCourseMapper">
+
+
+	<select id="getKlUsers" resultType="com.ak1ak1.entity.MyCourse">
+		select * from kl_user
+		<where>
+			<if test="query.name != null and  query.name != ''">
+				AND CONCAT(name,phone) LIKE '%${query.name}%'
+			</if>
+		</where>
+		ORDER BY created desc
+		LIMIT #{query.mStartRow},#{query.limit}
+	</select>
+	
+	<select id="getKlUsersCount" resultType="int">
+		select count(id) from kl_user 
+		<where>
+			<if test="query.name != null and  query.name != ''">
+				AND CONCAT(name,phone) LIKE '%${query.name}%'
+			</if>
+		</where>
+	</select>
+	<!-- 导出 -->
+	<select id="exportKlUserInfo" resultType="com.ak1ak1.entity.MyCourse">
+		select * from kl_user
+		<where>
+			<if test="query.name != null and  query.name != ''">
+				AND CONCAT(name,phone) LIKE '%${query.name}%'
+			</if>
+		</where>
+		ORDER BY created desc
+	</select>
+	
+</mapper>
