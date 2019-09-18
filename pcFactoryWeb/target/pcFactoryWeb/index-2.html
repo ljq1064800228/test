@@ -1,0 +1,388 @@
+			<!DOCTYPE html>
+			<html lang="en">
+			<head>
+			    <meta charset="UTF-8">
+			    <meta name="flexible" content="initial-dpr=1">
+			    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,minimum-scale=1,user-scalable=no">
+			    <meta name="flexible" content="initial-dpr=1">
+				    <!--第一版落地页-->
+			    <title>昆仑定位--《企业定位商战课程》</title>
+			    <style>
+			        *,section,div,p,span,a,image{
+				        position: relative;
+			            margin: 0;
+			            padding: 0;
+			        }
+			        .floor{
+			            display: block;
+			            position: relative;
+			        }
+			        .imgbg{
+			            display: block;
+			            width: 100%;
+			            height: 100%;
+			        }
+			        .form{
+			        }
+			        .form form{
+			            position: absolute;
+			            top: 0;
+			            left: 0;
+			            right: 0;
+			            bottom: 0;
+			            width: 7.253rem;
+			            height: 8.96rem;
+			            display: block;
+			            margin: auto;
+			        }
+			        .row-input{
+			            width: 7.2rem;
+			            height: 1.147rem;
+			            border: 0.027rem solid #a18b59;
+			            margin-top: 0.667rem;
+			            border-radius: 0.267rem;
+			            display: flex;
+			            justify-content: space-between;
+			            align-items: center;
+			            padding: 0 0.267rem;
+			            box-sizing: border-box;
+			            position: relative;
+			        }
+			        .row-input>span{
+			            font-size: 0.32rem;
+			            color: #fff;
+			            width: 1.6rem;
+			            min-width: 1.333rem;
+			            text-align: center;
+			        }
+			        .row-input input[type='text']{
+			            width: 4rem;
+			            text-align: right;
+			            border: 0;
+			            outline: none;
+			            background: transparent;
+			            color: #fff;
+			            font-size: 0.32rem;
+			        }
+
+			        label[ischeckboxtwo] {
+			            font-size: 0;
+			            height: 0.625rem;
+			            display: inline-block;
+			            line-height: 0.625rem;
+			            vertical-align: middle;
+			            margin-left: 0.133rem;
+			        }
+			        label[ischeckboxtwo]>* {
+			            display: inline-block;
+			            font-size: 0.375rem;
+			            vertical-align: middle;
+			            margin: 0;
+			        }
+			        label[ischeckboxtwo] input[type="checkbox"] {
+			            display: none;
+			        }
+			        label[ischeckboxtwo]>i {
+			            width: 0.32rem;
+			            height: 0.32rem;
+			            border: 0.027rem solid #fff;
+			            background-color: transparent;
+			            position: relative;
+			        }
+			        label[ischeckboxtwo]>i::after {
+			            content: '';
+			            width: 0.09375rem;
+			            height: 0.25rem;
+			            background-color: transparent;
+			            position: absolute;
+			            top: 50%;
+			            left: 50%;
+			            margin-left: -0.0625rem;
+			            margin-top: -0.1875rem;
+			            transition: transform 0.1s ease-out;
+			            -webkit-transition: transform 0.1s ease-out;
+			            -moz-transition: transform 0.1s ease-out;
+			            -ms-transition: transform 0.1s ease-out;
+			            -o-transition: transform 0.1s ease-out;
+			            transform: scale(0) rotate(45deg);
+			            -webkit-transform: scale(0) rotate(45deg);
+			            -moz-transform: scale(0) rotate(45deg);
+			            -ms-transform: scale(0) rotate(45deg);
+			            -o-transform: scale(0) rotate(45deg);
+			        }
+			        label[ischeckboxtwo] input[type="checkbox"]:checked+i::after {
+			            border-color: #0f904e;
+			            border-right: 0.027rem solid #fff;
+			            border-bottom: 0.027rem solid #fff;
+			            transform: scale(1) rotate(45deg);
+			            -webkit-transform: scale(1) rotate(45deg);
+			            -moz-transform: scale(1) rotate(45deg);
+			            -ms-transform: scale(1) rotate(45deg);
+			            -o-transform: scale(1) rotate(45deg);
+			        }
+			        label[ischeckboxtwo]>span {
+			            padding-left: 0.133rem;
+			            color: #fff;
+			        }
+			        .row-block{
+			            flex-wrap: wrap;
+			        }
+			        .row-block>span{
+			            display: block;
+			            width: 100%;
+			            text-align: left;
+			        }
+			        .row-block input[type='text']{
+			            width: 100%;
+			            text-align: left;
+			            border-bottom: 1px solid #888;
+			        }
+			        .row-button{
+			            display: block;
+			            margin-top: 0.667rem;
+			        }
+			        .row-button button{
+			            display: block;
+			            width: 100%;
+			            height: 0.893rem;
+			            background: url("./images/btn1.png") no-repeat center center;
+			            -webkit-background-size: 100% 100%;
+			            background-size: 100% 100%;
+			            border: 0;
+			            outline: 0;
+			        }
+			        .jumpSuccess{
+			            position: absolute;
+			            bottom: 3.2rem;
+			            left: 50%;
+			            margin-left: -1.633rem;
+			            width: 3.267rem;
+			            height: 0.893rem;
+			            background: url("./images/btn2.png") no-repeat center center;
+			            -webkit-background-size: 100% 100%;
+			            background-size: 100% 100%;
+			            border: 0;
+			            outline: 0;
+			        }
+			        .jumpDetail{
+			            position: absolute;
+			            bottom: 0.8rem;
+			            left: 50%;
+			            margin-left: -3.613rem;
+			            width: 7.227rem;
+			            height: 0.893rem;
+			            background: url("./images/btn3.png") no-repeat center center;
+			            -webkit-background-size: 100% 100%;
+			            background-size: 100% 100%;
+			            border: 0;
+			            outline: 0;
+			        }
+			        .btnWrap{
+			            position: fixed;
+			            right: 0.15rem;
+			            bottom: 0.533rem;
+			            width: 1.587rem;
+			        }
+			        .btnWrap button,.btnWrap a{
+			            display: block;
+			            width: 1.597rem;
+			            height: 1.597rem;
+			            background-repeat: no-repeat;
+			            background-position: center center;
+			            -webkit-background-size: 100% 100%;
+			            background-size: 100% 100%;
+			            background-color: transparent;
+			            border: 0;
+			            outline: 0;
+			        }
+			        .btnWrap button{
+				        background-size: 85% 85%;
+			            margin-bottom: 0.107rem;
+			            background-image: url("./images/btn5.png");
+			        }
+			        /*.btnWrap a{
+			            margin-bottom: 0.387rem;
+			            background-image: url("./images/btn4.png");
+			            background-size: 85% 85%;
+			            
+			        }*/
+
+			        .msgToast{
+			    position: fixed;
+	            top: 0;
+	            left: 0;
+	            bottom: 0;
+	            right: 0;
+	            font-size: 14px;
+	            z-index: 999;
+	            margin: auto;
+	            max-width: 80%;
+	            max-height: 1.6rem;
+	            line-height: 0.533rem;
+	            color: #EA0000;
+	            text-align: center;
+	            display: none;
+			        }
+			        .msgToast span{
+			            display: inline-block;
+			            max-width: 100%;
+			            padding: 0.133rem 0.267rem;
+			            background-color: rgba(255,255,255,.8);
+			            border-radius: 0.133rem;
+			        }
+			    </style>
+			    <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+			    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+			</head>
+			<body>
+			<section class="wrap" style="position: relative;">
+			    <div class="floor">
+			        <img class="imgbg" src="./images/H5-1.jpg" alt="">
+			    </div>
+			    <div class="floor">
+			        <img class="imgbg" src="./images/H5-2.jpg" alt="">
+			    </div>
+			    <div class="floor">
+			        <img class="imgbg" src="./images/H5-3.jpg" alt="">
+			    </div>
+			    <div class="floor">
+			        <img class="imgbg" src="./images/H5-4.jpg" alt="">
+			        <button onclick="jumpClick('.form')" class="jumpSuccess"></button>
+			    </div>
+			    <div class="floor form">
+			        <img class="imgbg" src="./images/H5-5-1.jpg" alt="">
+			        <form action="javascript:;">
+			            <div class="row-input">
+			                <span>您的姓名</span>
+			                <input name="name" type="text" placeholder="请输入">
+			            </div>
+			            <div class="row-input">
+			                <span>您的电话</span>
+			                <input name="phone" type="text" placeholder="请输入">
+			            </div>
+			            <div class="row-input">
+			                <span>您的职位(多选)</span>
+			                <p>
+			                    <label ischeckboxtwo for="z1">
+			                        <input value="董事长" name="positionJob" id="z1" type="checkbox">
+			                        <i></i>
+			                        <span>董事长</span>
+			                    </label>
+			                    <label ischeckboxtwo for="z2">
+			                        <input value="股东" name="positionJob" id="z2" type="checkbox">
+			                        <i></i>
+			                        <span>股东</span>
+			                    </label>
+			                    <label ischeckboxtwo for="z3">
+			                        <input value="高管" name="positionJob" id="z3" type="checkbox">
+			                        <i></i>
+			                        <span>高管</span>
+			                    </label>
+			                </p>
+			            </div>
+			            <div class="row-input row-block">
+			                <span>您遇到的问题</span>
+			                <input name="question" type="text" placeholder="请输入,如定位不准、发展受挫、寻求改革">
+			            </div>
+			            <div class="row-button">
+			                <button onclick="jumpSubmit()"></button>
+			            </div>
+			        </form>
+			        <div>
+			            <button onclick="jumpClick('.detail')" class="jumpDetail"></button>
+			        </div>
+			    </div>
+			    <div class="floor detail">
+			        <img class="imgbg" src="./images/H5-6.jpg" alt="">
+			    </div>
+			    <div class="floor">
+			        <img class="imgbg" src="./images/H5-7.jpg" alt="">
+			    </div>
+			    <div class="floor">
+			        <img class="imgbg" src="./images/H5-8.jpg" alt="">
+			    </div>
+			    <div class="floor">
+			        <img class="imgbg" src="./images/H5-9.jpg" alt="">
+			    </div>
+			    <div class="floor">
+			        <img class="imgbg" src="./images/H5-10.jpg" alt="">
+			    </div>
+
+			    <div class="btnWrap">
+			        <button onclick="jumpClick('.form')"></button>
+			      <!--  <a href="tel:400 602 6068"></a>-->
+			    </div>
+			</section>
+
+			<script>
+			    // 提交
+			    function jumpSubmit(){
+			        var name = $('input[name="name"]').val();
+			        var phone = $('input[name="phone"]').val();
+			        var positionJob = [];
+			        $('input[name="positionJob"]:checked').each(function(){
+			            positionJob.push($(this).val());
+			        });
+			        var question = $('input[name="question"]').val();
+
+			        if(!name){
+			            msgToast('请输入名字')
+			            return false
+			        }
+			        var phoneRegular = /^1[3|4|5|6|7|8|9][0-9]{9}$/;
+			        if(!phoneRegular.test(phone)){
+			            msgToast('请输入正确的手机号')
+			            return false
+			        }
+			        if(!positionJob || positionJob.length === 0){
+			            msgToast('请选择您的职位')
+			            return false
+			        }
+			        if(!question){
+			            msgToast('请描述您的问题')
+			            return false
+			        }
+
+					positionJob = positionJob.join(',');
+					
+			        $.ajax({
+			              type: "POST",
+			              url : 'http://youfugames.cn:8080/kldw/addKlUser',
+						  headers: {
+								'Content-Type': 'application/x-www-form-urlencoded'
+						  },
+						  withCredentials: false,
+			              data:{"name":name,"phone":phone,"positionJob":positionJob,"question":question},
+			              success: function (res) {
+			                   if(res.success){
+			                        msgToast('提交成功')
+			                   }else{
+			                        msgToast('已提交过')
+			                   }
+			              }
+			         });
+			    }
+
+			    // 跳转
+			    function jumpClick(jumpEle) {
+			        // jumpEle 为目标元素
+			        var top = $(jumpEle).offset().top;
+			        $('html,body').stop().animate({scrollTop: top+'px'},100,'linear')
+			    }
+
+			    // 提示窗
+			    function msgToast(msg,fun) {
+			        var msgText = msg || '';
+			        var callback = fun || function(){}
+			        $('body').append('<div class="msgToast"><span>'+msgText+'</span></div>');
+			        $(".msgToast").fadeIn(100);
+			        setTimeout(function () {
+			            $(".msgToast").fadeOut(100,function () {
+			                $(".msgToast").remove()
+			                callback();
+			            });
+			        },2400)
+			    }
+			</script>
+			</body>
+			</html>

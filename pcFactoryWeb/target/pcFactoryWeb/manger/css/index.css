@@ -1,0 +1,21 @@
+/* main_wrap */
+.main_wrap {	
+	width: 100%;
+	position: relative;
+	/*min-height: 760px;*/
+	min-height: 100%;
+}
+.main_in {	
+    width: 100%;
+    min-width:1300px;
+    min-height: 100%;
+    padding-left: 200px;
+    padding-right:10px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+}
