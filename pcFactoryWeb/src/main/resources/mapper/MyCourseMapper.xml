@@ -3,34 +3,55 @@
 <mapper namespace="com.ak1ak1.repository.mapper.MyCourseMapper">
 
 
-	<select id="getKlUsers" resultType="com.ak1ak1.entity.MyCourse">
-		select * from kl_user
+	<select id="getCourses" resultType="com.ak1ak1.entity.MyCourse">
+		select * from my_course
 		<where>
-			<if test="query.name != null and  query.name != ''">
-				AND CONCAT(name,phone) LIKE '%${query.name}%'
+			<if test="query.course_name != null and  query.course_name != ''">
+				AND CONCAT(course_name) LIKE '%${query.course_name}%'
+			</if>
+			<if test="query.course_sort != null and  query.course_sort != ''">
+				AND CONCAT(course_sort) LIKE '%${query.course_sort}%'
+			</if>
+			<if test="query.course_mark != null and  query.course_mark != ''">
+				AND CONCAT(course_mark) LIKE '%${query.course_mark}%'
+			</if>
+			<if test="query.course_status != null and  query.course_status != ''">
+				AND CONCAT(course_status) LIKE '%${query.course_status}%'
 			</if>
 		</where>
 		ORDER BY created desc
 		LIMIT #{query.mStartRow},#{query.limit}
 	</select>
 	
-	<select id="getKlUsersCount" resultType="int">
-		select count(id) from kl_user 
+	<select id="getCoursesCount" resultType="int">
+		select count(id) from my_course 
 		<where>
-			<if test="query.name != null and  query.name != ''">
-				AND CONCAT(name,phone) LIKE '%${query.name}%'
+			<if test="query.course_name != null and  query.course_name != ''">
+				AND CONCAT(course_name) LIKE '%${query.course_name}%'
+			</if>
+			<if test="query.course_sort != null and  query.course_sort != ''">
+				AND CONCAT(course_sort) LIKE '%${query.course_sort}%'
+			</if>
+			<if test="query.course_mark != null and  query.course_mark != ''">
+				AND CONCAT(course_mark) LIKE '%${query.course_mark}%'
+			</if>
+			<if test="query.course_status != null and  query.course_status != ''">
+				AND CONCAT(course_status) LIKE '%${query.course_status}%'
 			</if>
 		</where>
-	</select>
-	<!-- 导出 -->
-	<select id="exportKlUserInfo" resultType="com.ak1ak1.entity.MyCourse">
-		select * from kl_user
-		<where>
-			<if test="query.name != null and  query.name != ''">
-				AND CONCAT(name,phone) LIKE '%${query.name}%'
-			</if>
-		</where>
-		ORDER BY created desc
 	</select>
 	
+	<!-- 修改课程状态 -->
+	<update id="updateStatus">
+		update my_course set course_status = #{course_status},updated = now()
+		where id = #{course_id}
+	</update>
+	
+	<!-- 添加课程 -->
+	<insert id="inset" resultType="com.ak1ak1.entity.MyCourse">
+	insert into my_course 
+	(course_name,course_sort,course_image,course_price,course_intro,course_info)
+    values
+    (#{course_name},#{course_sort},#{course_image},#{course_price},#{course_intro},#{course_info})      
+	</insert>
 </mapper>

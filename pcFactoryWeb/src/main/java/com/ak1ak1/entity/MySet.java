@@ -24,11 +24,11 @@ public class MySet implements Serializable{
 
 	//课程编号
 	@Column(name="course_id")
-	private  Long course_id;
+	private  String course_id;
 
 	//视频名称
 	@Column(name="video_name")
-	private  Integer video_name;
+	private  String video_name;
 
 	//视频序号
 	@Column(name="video_num")
@@ -52,6 +52,18 @@ public class MySet implements Serializable{
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
 	private  Long updated;
 
+	//视频id
+	@Column(name="video_id")
+	private  String video_id;
+
+	public String getVideo_id() {
+		return video_id;
+	}
+
+	public void setVideo_id(String video_id) {
+		this.video_id = video_id;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -60,19 +72,19 @@ public class MySet implements Serializable{
 		this.id = id;
 	}
 
-	public Long getCourse_id() {
+	public String getCourse_id() {
 		return course_id;
 	}
 
-	public void setCourse_id(Long course_id) {
+	public void setCourse_id(String course_id) {
 		this.course_id = course_id;
 	}
 
-	public Integer getVideo_name() {
+	public String getVideo_name() {
 		return video_name;
 	}
 
-	public void setVideo_name(Integer video_name) {
+	public void setVideo_name(String video_name) {
 		this.video_name = video_name;
 	}
 
@@ -116,5 +128,5 @@ public class MySet implements Serializable{
 		this.updated = updated;
 	}
 
-	
+
 }

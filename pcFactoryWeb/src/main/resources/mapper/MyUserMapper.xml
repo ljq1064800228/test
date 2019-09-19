@@ -71,7 +71,7 @@
 	</select>
 	
 	<!-- 修改用户状态 -->
-	<update id="updateStatus" resultType="int">
+	<update id="updateStatus">
 		update my_user set status = #{status},updated = now()
 		where id = #{user_id}
 	</update>

@@ -32,23 +32,58 @@
 	</select>
 	
 	<select id="getMyOrdersCount" resultType="int">
-		select count(id) from kl_user 
+		select count(id) from my_order mo
+		left join my_course mc on mo.course_id = mc.course_id
+		left join my_user mu on mo.user_id = mu.user_id
 		<where>
-			<if test="query.name != null and  query.name != ''">
-				AND CONCAT(name,phone) LIKE '%${query.name}%'
+			<if test="query.mo.order_num != null and  query.mo.order_num != ''">
+				AND CONCAT(mo.order_num) LIKE '%${query.mo.order_num}%'
+			</if>
+			<if test="query.mc.course_name != null and  query.mc.course_name != ''">
+				AND CONCAT(mc.course_name) LIKE '%${query.mc.course_name}%'
+			</if>
+			<if test="query.mu.name != null and  query.mu.name != ''">
+				AND CONCAT(mu.name) LIKE '%${query.mu.name}%'
+			</if>
+			<if test="query.mo.created != null and  query.mo.created != ''">
+				AND CONCAT(mo.created) LIKE '%${query.mo.created}%'
+			</if>
+			<if test="query.mo.source != null and  query.mo.source != ''">
+				AND CONCAT(mo.source) LIKE '%${query.mo.source}%'
+			</if>
+			<if test="query.mo.payment_type != null and  query.mo.payment_type != ''">
+				AND CONCAT(mo.payment_type) LIKE '%${query.mo.payment_type}%'
 			</if>
 		</where>
 	</select>
 	
-	<!-- 导出全部数据-->
-	<select id="exportKlUserInfo" resultType="com.ak1ak1.entity.MyOrder">
-		select * from kl_user
+	<!-- 导出全部/筛选数据-->
+	<select id="exportMyOrderInfo" resultType="com.ak1ak1.entity.MyOrder">
+		select mo.order_num, mu.name, mc.course_image, mc.course_name, mo.payment, mo.created, mo.status, mo.payment_type, mo.pay_time, mo.source from my_order mo
+		left join my_course mc on mo.course_id = mc.course_id
+		left join my_user mu on mo.user_id = mu.user_id
 		<where>
-			<if test="query.name != null and  query.name != ''">
-				AND CONCAT(name,phone) LIKE '%${query.name}%'
+			<if test="query.mo.order_num != null and  query.mo.order_num != ''">
+				AND CONCAT(mo.order_num) LIKE '%${query.mo.order_num}%'
+			</if>
+			<if test="query.mc.course_name != null and  query.mc.course_name != ''">
+				AND CONCAT(mc.course_name) LIKE '%${query.mc.course_name}%'
+			</if>
+			<if test="query.mu.name != null and  query.mu.name != ''">
+				AND CONCAT(mu.name) LIKE '%${query.mu.name}%'
+			</if>
+			<if test="query.mo.created != null and  query.mo.created != ''">
+				AND CONCAT(mo.created) LIKE '%${query.mo.created}%'
+			</if>
+			<if test="query.mo.source != null and  query.mo.source != ''">
+				AND CONCAT(mo.source) LIKE '%${query.mo.source}%'
+			</if>
+			<if test="query.mo.payment_type != null and  query.mo.payment_type != ''">
+				AND CONCAT(mo.payment_type) LIKE '%${query.mo.payment_type}%'
 			</if>
 		</where>
 		ORDER BY created desc
 	</select>
+	
 	
 </mapper>

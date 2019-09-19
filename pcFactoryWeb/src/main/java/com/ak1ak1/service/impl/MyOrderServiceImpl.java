@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ak1ak1.entity.MyUser;
+import com.ak1ak1.entity.MyOrder;
 import com.ak1ak1.entity.query.MyOrderQuery;
 import com.ak1ak1.entity.query.QueryResult;
 import com.ak1ak1.repository.mapper.MyOrderMapper;
@@ -20,14 +20,20 @@ public class MyOrderServiceImpl implements MyOrderService{
 	private MyOrderMapper myOrderMapper;
 	
 	@Override
-	public QueryResult<MyUser> getMyUsers(MyOrderQuery orderQuery) {
+	public QueryResult<MyOrder> getMyOrders(MyOrderQuery orderQuery) {
 		Integer size = myOrderMapper.getMyOrdersCount(orderQuery);
 		if(size<=0){
 			return null;
 		}
-		List<MyUser>  list = myOrderMapper.getMyOrders(orderQuery);
-		QueryResult<MyUser> result = new QueryResult<>(list,size,orderQuery.getPage());
+		List<MyOrder>  list = myOrderMapper.getMyOrders(orderQuery);
+		QueryResult<MyOrder> result = new QueryResult<>(list,size,orderQuery.getPage());
 		return result;
 	}
+
+	@Override
+	public List<MyOrder> exportMyOrderInfo(MyOrderQuery orderquery) {
+		return myOrderMapper.exportMyOrderInfo(orderquery);
+	}
+
 
 }

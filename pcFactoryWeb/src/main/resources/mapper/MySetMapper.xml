@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ak1ak1.repository.mapper.MysetMapper">
+
+
+	<select id="getMySets" resultType="com.ak1ak1.entity.MySet">
+		select * from my_set
+		ORDER BY created desc
+	</select>
+	
+	<select id="getMySetsCount" resultType="int">
+		select count(id) from my_set
+	</select>
+	
+	
+	
+	<!-- 更新视频 -->
+	<update id="updateVideo" >
+		update my_set set course_id = #{course_id}, video_name = #{video_name},video_num = #{video_num},video_url = #{video_url},video_status = #{video_status},updated = now()
+		where video_id in (
+			<foreach collection="video_ids" separator="," item="item">
+				#{item}
+			</foreach>
+		)
+	</update>
+</mapper>

@@ -24,11 +24,11 @@ public class MyCourse implements Serializable{
 
 	//课程编号
 	@Column(name="course_id")
-	private  Long course_id;
+	private  String course_id;
 
 	//课程名称
 	@Column(name="course_name")
-	private  Integer course_name;
+	private  String course_name;
 
 	//课程封面
 	@Column(name="course_image")
@@ -59,7 +59,16 @@ public class MyCourse implements Serializable{
 	@Column(name="updated")
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
 	private  Date updated;
-
+	
+	// 课程介绍
+	@Column(name="course_intro")
+	private  String course_intro;
+	
+	// 课程详情
+	@Column(name="course_info")
+	private  String course_info;
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -68,19 +77,19 @@ public class MyCourse implements Serializable{
 		this.id = id;
 	}
 
-	public Long getCourse_id() {
+	public String getCourse_id() {
 		return course_id;
 	}
 
-	public void setCourse_id(Long course_id) {
+	public void setCourse_id(String course_id) {
 		this.course_id = course_id;
 	}
 
-	public Integer getCourse_name() {
+	public String getCourse_name() {
 		return course_name;
 	}
 
-	public void setCourse_name(Integer course_name) {
+	public void setCourse_name(String course_name) {
 		this.course_name = course_name;
 	}
 
