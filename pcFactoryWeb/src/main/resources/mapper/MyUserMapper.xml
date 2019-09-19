@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ak1ak1.repository.mapper.MyUserMapper">
+
+
+	<select id="getMyUsers" resultType="com.ak1ak1.entity.MyUser">
+		select * from my_user
+		<where>
+			<if test="query.user_id != null and  query.user_id != ''">
+				AND CONCAT(user_id) LIKE '%${query.user_id}%'
+			</if>
+			<if test="query.nickname != null and  query.nickname != ''">
+				AND CONCAT(nickname) LIKE '%${query.nickname}%'
+			</if>
+			<if test="query.telPhone != null and  query.telPhone != ''">
+				AND CONCAT(telPhone) LIKE '%${query.telPhone}%'
+			</if>
+			<if test="query.type != null and  query.type != ''">
+				AND CONCAT(type) LIKE '%${query.type}%'
+			</if>
+			<if test="query.created != null and  query.created != ''">
+				AND CONCAT(created) LIKE '%${query.created}%'
+			</if>
+		</where>
+		ORDER BY created desc
+		LIMIT #{query.mStartRow},#{query.limit}
+	</select>
+	
+	<select id="getMyUsersCount" resultType="int">
+		select count(id) from my_user 
+		<where>
+			<if test="query.user_id != null and  query.user_id != ''">
+				AND CONCAT(user_id) LIKE '%${query.user_id}%'
+			</if>
+			<if test="query.nickname != null and  query.nickname != ''">
+				AND CONCAT(nickname) LIKE '%${query.nickname}%'
+			</if>
+			<if test="query.telPhone != null and  query.telPhone != ''">
+				AND CONCAT(telPhone) LIKE '%${query.telPhone}%'
+			</if>
+			<if test="query.type != null and  query.type != ''">
+				AND CONCAT(type) LIKE '%${query.type}%'
+			</if>
+			<if test="query.created != null and  query.created != ''">
+				AND CONCAT(created) LIKE '%${query.created}%'
+			</if>
+		</where>
+	</select>
+	
+	<!-- 导出 -->
+	<select id="exportMyUserInfo" resultType="com.ak1ak1.entity.MyUser">
+		select * from my_user
+		<where>
+			<if test="query.user_id != null and  query.user_id != ''">
+				AND CONCAT(user_id) LIKE '%${query.user_id}%'
+			</if>
+			<if test="query.nickname != null and  query.nickname != ''">
+				AND CONCAT(nickname) LIKE '%${query.nickname}%'
+			</if>
+			<if test="query.telPhone != null and  query.telPhone != ''">
+				AND CONCAT(telPhone) LIKE '%${query.telPhone}%'
+			</if>
+			<if test="query.type != null and  query.type != ''">
+				AND CONCAT(type) LIKE '%${query.type}%'
+			</if>
+			<if test="query.created != null and  query.created != ''">
+				AND CONCAT(created) LIKE '%${query.created}%'
+			</if>
+		</where>
+		ORDER BY created desc
+	</select>
+	
+	<!-- 修改用户状态 -->
+	<update id="updateStatus" resultType="int">
+		update my_user set status = #{status},updated = now()
+		where id = #{user_id}
+	</update>
+</mapper>
