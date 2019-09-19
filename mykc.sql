@@ -45,6 +45,8 @@ create table my_course
    course_mark          varchar(20),
    course_price         bigint(20),
    course_status        tinyint(4),
+   course_intro         varchar(100),
+   course_info          varchar(200),
    created              datetime,
    updated              datetime,
    primary key (id)
@@ -94,6 +96,7 @@ create table my_order
 create table my_set
 (
    id                   bigint(20) not null auto_increment,
+   video_id             varchar(50),
    course_id            bigint(20),
    video_name           varchar(40),
    video_num            varchar(30),
