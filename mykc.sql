@@ -22,7 +22,7 @@ drop table if exists my_user;
 create table exchange_code
 (
    id                   bigint(20) not null auto_increment,
-   batch                varchar(30),
+   batch_id				varchar(30),
    change_code          varchar(100),
    status               tinyint(4),
    user_id              bigint(20),
@@ -42,7 +42,6 @@ create table my_course
    course_name          varchar(100),
    course_image         varchar(200),
    course_sort          varchar(20),
-   course_mark          varchar(20),
    course_price         bigint(20),
    course_status        tinyint(4),
    course_intro         varchar(100),
@@ -60,6 +59,7 @@ alter table my_course comment '×¢ÊÍ£º¿Î³Ì±í';
 create table my_manage
 (
    id                   bigint(30) not null auto_increment,
+   batch_id				varchar(30),
    course_id            varchar(30),
    batch                varchar(30),
    create_num           int(10),
