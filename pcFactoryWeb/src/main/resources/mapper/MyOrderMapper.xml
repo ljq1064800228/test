@@ -85,5 +85,4 @@
 		ORDER BY created desc
 	</select>
 	
-	
 </mapper>

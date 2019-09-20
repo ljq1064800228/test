@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ak1ak1.repository.mapper.ExchangeCodeMapper">
+
+	<select id="getCodes" resultType="com.ak1ak1.entity.ExchangeCode">
+		select ec.exchange_code, ec.status, mu.name, ec.activated_time, ec.QR_code from exchange_code ec
+		left join my_user mu on ec.user_id = mu.user_id
+		<where>
+			<if test="query.change_code != null and  query.change_code != ''">
+				AND CONCAT(change_code) LIKE '%${query.change_code}%'
+			</if>
+		</where>
+		ORDER BY created desc
+		LIMIT #{query.mStartRow},#{query.limit}
+	</select>
+	
+	<select id="getCodesCount" resultType="int">
+		select count(id) from exchange_code
+		left join my_user mu on ec.user_id = mu.user_id
+		<where>
+			<if test="query.change_code != null and  query.change_code != ''">
+				AND CONCAT(change_code) LIKE '%${query.change_code}%'
+			</if>
+		</where>
+	</select>
+	
+	<!-- 导出全部/筛选数据 -->
+	<select id="exportCodeInfo" resultType="com.ak1ak1.repository.mapper.ExchangeCodeMapper">
+		select ec.exchange_code, ec.status, mu.name, ec.activated_time, ec.QR_code from exchange_code ec
+		left join my_user mu on ec.user_id = mu.user_id
+		<where>
+			<if test="query.change_code != null and  query.change_code != ''">
+				AND CONCAT(change_code) LIKE '%${query.change_code}%'
+			</if>
+		</where>
+		ORDER BY created desc
+	</select>
+	
+</mapper>

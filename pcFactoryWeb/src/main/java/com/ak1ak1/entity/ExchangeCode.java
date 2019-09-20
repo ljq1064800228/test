@@ -22,9 +22,9 @@ public class ExchangeCode implements Serializable{
 	@Column(name="id")
 	private Long id;
 	
-	//批次
+	//批次id
 	@Column(name="batch")
-	private String batch;
+	private Long batch_id;
 	
 	//兑换码
 	@Column(name="change_code")
@@ -67,12 +67,13 @@ public class ExchangeCode implements Serializable{
 		this.id = id;
 	}
 
-	public String getBatch() {
-		return batch;
+
+	public Long getBatch_id() {
+		return batch_id;
 	}
 
-	public void setBatch(String batch) {
-		this.batch = batch;
+	public void setBatch_id(Long batch_id) {
+		this.batch_id = batch_id;
 	}
 
 	public String getChange_code() {

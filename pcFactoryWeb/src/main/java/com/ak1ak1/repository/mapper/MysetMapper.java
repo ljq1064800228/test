@@ -7,7 +7,9 @@ import org.apache.ibatis.annotations.Param;
 import com.ak1ak1.entity.MySet;
 import com.ak1ak1.entity.query.MysetQuery;
 
-public interface MysetMapper {
+import tk.mybatis.mapper.common.Mapper;
+
+public interface MysetMapper extends Mapper<MySet>{
 
 	Integer getMySetsCount(@Param("query")MysetQuery mysetQuery);
 

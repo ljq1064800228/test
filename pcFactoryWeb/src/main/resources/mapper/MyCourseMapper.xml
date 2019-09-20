@@ -50,8 +50,8 @@
 	<!-- 添加课程 -->
 	<insert id="inset" resultType="com.ak1ak1.entity.MyCourse">
 	insert into my_course 
-	(course_name,course_sort,course_image,course_price,course_intro,course_info)
+	(course_id,course_name,course_sort,course_image,course_price,course_status,course_intro,course_info,created,updated)
     values
-    (#{course_name},#{course_sort},#{course_image},#{course_price},#{course_intro},#{course_info})      
+    (#{course_id},#{course_name},#{course_sort},#{course_image},#{course_price},#{course_status},#{course_intro},#{course_info},#{created},#{updated})      
 	</insert>
 </mapper>

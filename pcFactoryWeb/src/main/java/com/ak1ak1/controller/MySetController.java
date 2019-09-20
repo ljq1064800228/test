@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.ak1ak1.entity.MyCourse;
 import com.ak1ak1.entity.MySet;
 import com.ak1ak1.entity.query.MysetQuery;
 import com.ak1ak1.entity.query.QueryResult;
@@ -24,7 +23,7 @@ public class MySetController {
 	@Autowired
 	private MySetService mySetService;
 	
-	// 配置课程查询
+	// 配置视频查询
 	@RequestMapping(value ="getMysets")
 	@ResponseBody
 	public Map<String, Object> getMysets(MysetQuery query){

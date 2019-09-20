@@ -14,13 +14,16 @@
 	
 	
 	
-	<!-- 更新视频 -->
-	<update id="updateVideo" >
-		update my_set set course_id = #{course_id}, video_name = #{video_name},video_num = #{video_num},video_url = #{video_url},video_status = #{video_status},updated = now()
+	<!-- 添加视频 -->
+	 <insert id="updateVideo" parameterType="com.ak1ak1.entity.MySet">
+		insert into my_set
+		(course_id,video_name,video_num,video_url,video_status,updated,created)
+          values
+          (#{course_id},#{video_name},#{video_num},#{video_url},#{video_status},now(),now())
 		where video_id in (
 			<foreach collection="video_ids" separator="," item="item">
 				#{item}
 			</foreach>
 		)
-	</update>
+	</insert>
 </mapper>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ak1ak1.repository.mapper.MyManageMapper">
+
+
+	<select id="getMyManages" resultType="com.ak1ak1.entity.MyManage">
+		select * from my_manage
+		<where>
+			<if test="query.batch != null and  query.batch != ''">
+				AND CONCAT(batch) LIKE '%${query.batch}%'
+			</if>
+			<if test="query.change_code != null and  query.change_code != ''">
+				AND CONCAT(change_code) LIKE '%${query.change_code}%'
+			</if>
+			<if test="query.created != null and  query.created != ''">
+				AND CONCAT(created) LIKE '%${query.created}%'
+			</if>
+		</where>
+		ORDER BY created desc
+		LIMIT #{query.mStartRow},#{query.limit}
+	</select>
+	
+	<select id="getMyManagesCount" resultType="int">
+		select count(id) from my_manage 
+		<where>
+			<if test="query.batch != null and  query.batch != ''">
+				AND CONCAT(batch) LIKE '%${query.batch}%'
+			</if>
+			<if test="query.change_code != null and  query.change_code != ''">
+				AND CONCAT(change_code) LIKE '%${query.change_code}%'
+			</if>
+			<if test="query.created != null and  query.created != ''">
+				AND CONCAT(created) LIKE '%${query.created}%'
+			</if>
+		</where>
+	</select>
+	
+	<!-- 查出课程id -->
+	<select id="getCourseId" resultType="com.ak1ak1.entity.MyCourse">
+	select course_id from my_course where course_name = #{course_name}
+	</select>
+	
+	<!-- 生成课程批次 -->
+	<insert id="createItem" parameterType="com.ak1ak1.entity.MyManage">
+		insert into my_manage
+		(batch_id,course_id,batch,create_num,free_watch,remark,updated,created)
+          values
+          (#{batch_id},#{course_id},#{batch},#{create_num},#{free_watch},#{remark},now(),now())
+	</insert>
+</mapper>

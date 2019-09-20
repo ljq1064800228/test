@@ -26,6 +26,10 @@ public class MyManage implements Serializable{
 	@Column(name="course_id")
 	private  Long course_id;
 
+	//批次id
+	@Column(name="batch_id")
+	private  Long batch_id;
+	
 	//批次
 	@Column(name="batch")
 	private  String batch;
@@ -46,11 +50,11 @@ public class MyManage implements Serializable{
 	@Column(name="created")
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
 	private  Date created;
-	
+
 	@Column(name="updated")
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
 	private  Long updated;
-	
+
 	public Long getUpdated() {
 		return updated;
 	}
@@ -74,6 +78,14 @@ public class MyManage implements Serializable{
 	public void setCourse_id(Long course_id) {
 		this.course_id = course_id;
 	}
+	
+	public Long getBatch_id() {
+		return batch_id;
+	}
+
+	public void setBatch_id(Long batch_id) {
+		this.batch_id = batch_id;
+	}
 
 	public String getBatch() {
 		return batch;
@@ -82,7 +94,7 @@ public class MyManage implements Serializable{
 	public void setBatch(String batch) {
 		this.batch = batch;
 	}
-
+	
 	public Integer getCreate_num() {
 		return create_num;
 	}
